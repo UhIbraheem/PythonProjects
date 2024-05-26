@@ -9,6 +9,7 @@
 # output: One Two Three Four
 
 # Step 1 define dictionary with num for keys and the string for the value
+# tabel
 nums = {
     1: "One",
     2: "Two",
