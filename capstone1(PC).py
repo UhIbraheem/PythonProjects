@@ -10,6 +10,9 @@ from time import sleep
 # Intro Art function, opening for their game. It just displays a welcoming with ASCII Art
 
 # This is a new test comment, I will commit this and attempt to push it to my repository
+
+# Wow that actually wokred, this is a reply from github editing
+# ill make a few intentional mistakes with typos helo haw aree yoi
 def intro():
     print("\nWelcome to BlackJack!\n")
     print("                            _____           ")
