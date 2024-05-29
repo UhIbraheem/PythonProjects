@@ -8,6 +8,8 @@ from time import sleep
 # and the rules function
 
 # Intro Art function, opening for their game. It just displays a welcoming with ASCII Art
+
+# This is a new test comment, I will commit this and attempt to push it to my repository
 def intro():
     print("\nWelcome to BlackJack!\n")
     print("                            _____           ")
