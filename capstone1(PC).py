@@ -3,11 +3,11 @@ from time import sleep
 
 
 # A black game that rolls dice and uses those values to add to the player or the houses
-# total score, whichever reaches 21 or cloest to it without busting wins
+# total score, whichever reaches 21 or closest to it without busting wins
 # Functions needed - Menu function, Roll function, Game status function , Main function
 # and the rules function
 
-# Intro Art function, opening for ther game. It just displays a welcoming with ASCII Art
+# Intro Art function, opening for their game. It just displays a welcoming with ASCII Art
 def intro():
     print("\nWelcome to BlackJack!\n")
     print("                            _____           ")
@@ -36,7 +36,8 @@ def display_rules():
     print("8. You can 'Double Down' on your hand, doubling your bet and receiving one more card.")
     print("9. You can 'Split' pairs into two separate hands, and play them independently.")
     print(
-        "10. Insurance: If the dealer's up card is an Ace, you can take insurance, which pays 2:1 if the dealer has a Blackjack.")
+        "10. Insurance: If the dealer's up card is an Ace, you can take insurance, which pays 2:1 if the dealer has a "
+        "Blackjack.")
     print("11. Surrender: Some casinos offer the option to surrender, forfeiting half of your bet.")
     print("===============================================")
 
