@@ -1,5 +1,6 @@
-from random import randint, choice
+from random import choice
 from time import sleep
+
 
 # A black game that rolls dice and uses those values to add to the player or the houses
 # total score, whichever reaches 21 or cloest to it without busting wins
@@ -20,6 +21,7 @@ def intro():
     print("    |___0I|                       |____V|   ")
     print()
 
+
 def display_rules():
     print("===============================================")
     print("               Blackjack Rules                 ")
@@ -33,9 +35,11 @@ def display_rules():
     print("7. Dealer will hit until their cards total 17 or higher.")
     print("8. You can 'Double Down' on your hand, doubling your bet and receiving one more card.")
     print("9. You can 'Split' pairs into two separate hands, and play them independently.")
-    print("10. Insurance: If the dealer's up card is an Ace, you can take insurance, which pays 2:1 if the dealer has a Blackjack.")
+    print(
+        "10. Insurance: If the dealer's up card is an Ace, you can take insurance, which pays 2:1 if the dealer has a Blackjack.")
     print("11. Surrender: Some casinos offer the option to surrender, forfeiting half of your bet.")
     print("===============================================")
+
 
 def menu_choice():
     menuChoice = 0
@@ -49,17 +53,21 @@ def menu_choice():
             print("Please input a number!\n")
     return menuChoice
 
+
 def draw_card(hand):
-    cards = [11,2,3,4,5,6,7,8,9,10,10,10,10]
+    cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
     cardDrawn = choice(cards)
     hand.append(cardDrawn)
     return hand
+
 
 def hit_or_pass(score, houseScore):
     choice = 0
     while choice != 1 and choice != 2:
         try:
-            choice = int(input(f"=================\nYour Score: {score}\nHouse Score: {houseScore}\n=================\nWould you like to hit again or stand?\n1] Hit\n2] stand\nHit again or stand: "))
+            choice = int(input(
+                f"=================\nYour Score: {score}\nHouse Score: {houseScore}\n=================\nWould you "
+                f"like to hit again or stand?\n1] Hit\n2] stand\nHit again or stand: "))
             if choice != 1 and choice != 2:
                 print("Please enter 1 or 2.\n")
         except:
@@ -67,15 +75,16 @@ def hit_or_pass(score, houseScore):
 
     return choice
 
+
 def game_status(score, houseScore, playerHold, houseHold):
     gameStatus = False
-    #instead of returning a bunch of parameters and complicating the code
-    #Ill assign each possibility a number, when returned to main
-    #the number will be used to reference the reason for the game ending
+    # instead of returning a bunch of parameters and complicating the code
+    # I'll assign each possibility a number, when returned to main
+    # the number will be used to reference the reason for the game ending
 
     # if player busts = 1, house busts = 2, player lose = 3, house lose = 4
-    #So, 1 and 3 initiate the player losing events
-    #And, 2 and 4 initiate the house losing events
+    # So, 1 and 3 initiate the player losing events
+    # And, 2 and 4 initiate the house losing events
     # returns 5 for a tie
 
     condition = 0
@@ -95,52 +104,57 @@ def game_status(score, houseScore, playerHold, houseHold):
 
     return gameStatus, condition
 
+
 def can_house_draw(houseScore):
     if houseScore <= 16:
         return True
     else:
         return False
+
+
 def main():
     programStatus = gameStatus = True
     playerWins = houseWins = 0
 
     while programStatus:
-        #Display Intro
+        # Display Intro
         intro()
-        #Prompt user for their menu Choice
+        # Prompt user for their menu Choice
         choice = menu_choice()
-        
-        #beging the game loop 
+
+        # beging the game loop
         if choice == 1:
-            #Initialize the player card value and house card value, along with their hands
+            # Initialize the player card value and house card value, along with their hands
             playerHold = houseHold = False
-            playerScore = houseScore =  round = 0
+            playerScore = houseScore = round = 0
             playerHand = []
             houseHand = []
 
             while gameStatus:
                 if round == 0:
-                    #By default blackJack draws a card for the player and house
-                    #Draw initial card for player and house and display it
+                    # By default, blackJack draws a card for the player and house
+                    # Draw initial card for player and house and display it
                     playerHand = draw_card(playerHand)
                     houseHand = draw_card(houseHand)
-                    #Gets total score value for each hand
+                    # Gets total score value for each hand
                     playerScore = sum(playerHand)
                     houseScore = sum(houseHand)
                     print("\nInital set:")
-                    print(f"Your initial draw is {playerHand[round]}.Hand Value: {playerScore}\nHouse Initial Hand is {houseHand[round]}. Hand Value: {houseScore}.\n")
+                    print(
+                        f"Your initial draw is {playerHand[round]}.Hand Value: {playerScore}"
+                        f"\nHouse Initial Hand is {houseHand[round]}. Hand Value: {houseScore}.\n")
                 else:
-                    #Display intro to each round
+                    # Display intro to each round
                     sleep(1)
                     print("===========================================")
-                    print(f"               Round {round+1}             ")
+                    print(f"               Round {round + 1}             ")
                     print("===========================================\n\n")
 
                     print("***********************")
                     print(f"Your Hand: {playerHand}\nHouse Hand: {houseHand}")
                     print("***********************")
 
-                    #gets the players choice
+                    # gets the players choice
                     if not playerHold:
                         playerChoice = hit_or_pass(playerScore, houseScore)
                         if playerChoice == 1:
@@ -150,8 +164,8 @@ def main():
                         else:
                             print("\nYou hold!")
                             playerHold = True
-                    
-                    #checking if the house can draw (under card value condition)
+
+                    # checking if the house can draw (under card value condition)
                     if not houseHold:
                         HhouseMustDraw = can_house_draw(houseScore)
                         if HhouseMustDraw:
@@ -161,26 +175,26 @@ def main():
                             print("The house stands")
                             houseHold = True
 
-                    #Gets total score value for each hand
+                    # Gets total score value for each hand
                     playerScore = sum(playerHand)
                     houseScore = sum(houseHand)
 
-                    #Determine if either the player or house gets blackjack
-                    #Doubles the wins of the winner, ends the game instantly upon blackjack
+                    # Determine if either the player or house gets blackjack
+                    # Doubles the wins of the winner, ends the game instantly upon blackjack
                     if playerScore == 21:
                         print("BLACKJACK!!!")
                         playerWins += 2
                         gameStatus = False
                         continue
-                    elif  houseScore == 21:
+                    elif houseScore == 21:
                         print("The house gets Blackjack\nYou lose!")
                         houseWins += 2
                         gameStatus = False
                         continue
-                    
+
                     gameStatus, condition = game_status(playerScore, houseScore, playerHold, houseHold)
 
-                    #checks for Potential aces as 1's
+                    # checks for Potential aces as 1's
                     for playerCard, houseCard in zip(playerHand, houseHand):
                         if condition == 1:
                             if playerCard == 11:
@@ -193,12 +207,12 @@ def main():
                                 gameStatus = True
                                 condition = 0
 
-                    #checks again after ace conversion
+                    # checks again after ace conversion
                     gameStatus, condition = game_status(playerScore, houseScore, playerHold, houseHold)
 
                     # if player busts = 1, house busts = 2, player lose = 3, house lose = 4
-                    #So, 1 and 3 initiate the player losing events
-                    #And, 2 and 4 initiate the house losing events
+                    # So, 1 and 3 initiate the player losing events
+                    # And, 2 and 4 initiate the house losing events
                     # returns 5 for a tie
                     if condition == 0:
                         pass
@@ -218,11 +232,13 @@ def main():
                         print("It's a TIE! No winners")
 
                     if playerHold and houseHold:
-                            gameStatus = False 
+                        gameStatus = False
 
                     if not gameStatus:
-                        #display final hand and scores
-                        print(f"Your Hand: {playerHand}\nHandValue: {playerScore}\n==========================\nHouse Hand: {houseHand}\nHandValue: {houseScore}\n==========================")
+                        # display final hand and scores
+                        print(
+                            f"Your Hand: {playerHand}\nHandValue: {playerScore}\n==========================\nHouse "
+                            f"Hand: {houseHand}\nHandValue: {houseScore}\n==========================")
                         sleep(1)
                         print()
 
@@ -234,5 +250,6 @@ def main():
         else:
             programStatus = False
             print("Thank you for playing!\nGoodbye!")
+
 
 main()
