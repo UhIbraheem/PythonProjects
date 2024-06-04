@@ -1,22 +1,30 @@
 # Working with the turtle top create randomized art
-from turtle import Turtle, Screen
-from random import choice
+import turtle as t
+from random import choice, randint
+import colorgram
+
 # Creating the turtle class
-tim = Turtle()
+tim = t.Turtle()
 # Changing the shape of the turtle into a turtle shape
 tim.shape("turtle")
+t.colormode(255)
 
 
-colors = ["sky blue", "grey", "red", "yellow", "green", "blue","black", "purple", "dark sea green", "salmon", "cyan4", "pink"]
-direction = [0, 90, 180, 270]
-tim.pensize(8)
-n = 100
-for i in range(n):
-    tim.color(choice(colors))
-    tim.forward(20)
-    tim.setheading(choice(direction))
+def random_color():
+    x, y, z = randint(0, 255), randint(0, 255), randint(0, 255)
+    color = (x, y, z)
+    return color
 
+
+circle = 360
+tim.speed(0)
+heading = 0
+for i in range(circle // 4):
+    heading += 4
+    tim.color(random_color())
+    tim.circle(100)
+    tim.setheading(heading)
 
 # creating the screen and making it exit on click
-screen = Screen()
+screen = t.Screen()
 screen.exitonclick()
