@@ -1,7 +1,6 @@
 # Working with the turtle top create randomized art
 import turtle as t
 from random import choice, randint
-import colorgram
 
 # Creating the turtle class
 tim = t.Turtle()
