@@ -1,6 +1,7 @@
 import turtle
 from turtle import Turtle, Screen
 import random
+
 is_race_on = False
 screen = Screen()
 screen.setup(width=800, height=600)
@@ -9,7 +10,7 @@ colors = ["red", "orange", "yellow", "green", "blue", "purple"]
 all_turtles = []
 
 y = -250
-for turtle_index in range(0,6):
+for turtle_index in range(0, 6):
     new_turtle = Turtle(shape="turtle")
     new_turtle.color(colors[turtle_index])
     new_turtle.penup()
@@ -32,7 +33,5 @@ while is_race_on:
                 print(f"You've lost! The {winning_color} turtle is the winner!")
         rand_distance = random.randint(0, 10)
         turtle.forward(rand_distance)
-
-
 
 screen.exitonclick()
