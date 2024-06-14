@@ -1,0 +1,22 @@
+There are 4 main issues at hand to tackle the programming the pong game
+
+1. The screen layout and boundaries
+- The screen layout (size and background color)
+- The collision area
+
+2. Each players "paddle"
+- The shape, size, and color
+- The controls of the paddle
+- Collision of the paddle
+
+3. The scoreboard
+- Determining which player gets the point
+- Incrementation of the score at the top of the screen for each player
+
+4. The "pong"
+- Programming the movements and physics of the pong ball
+- Determining the shape, size, and collision of the pong
+
+:- Anything else consists of minor alterations
+small adjustments or configurations for the game to work properly
+
