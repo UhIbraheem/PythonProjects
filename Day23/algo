@@ -1,0 +1,21 @@
+Goal: Create a game similar to crossy road
+objective: player must manage through traffic and avoid being hit by cars
+once player clears traffic and makes it to the top of screen, they reset to the bottom and the difficulty increases
+1 point awarded per level
+
+Step 1: Create player class
+- must be able to control the player (only moving upwards starting from the bottom of the screen
+- must have a method to "level up" or reset the player to the bottom after theyve reached the top of the screen
+
+Step 2: Create a car class
+- must be able to increase in difficulty (increase amount of cars present & speed of cars)
+- generates a random Y position to bring cars through
+- only generates cars increments so theres no overlapping cars
+- every car has a different color
+
+Step 3: Detect collision between cars and player
+- ends the game
+
+Step 4: Create scoreboard
+- Increments in score witch each level
+

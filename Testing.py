@@ -1,31 +1,19 @@
-# temporary challenge projects for learning
-# and strengthening fundamental knowledge
+import time
+from turtle import Turtle, Screen
+
+screen = Screen()
+screen.setup(width=600, height=600)
+
+tim = Turtle()
+
+tim.xcor = -250
 
 
-# Challenge 1
-# make a program that returns int values into string written version
-# Example:
-# input: 1234
-# output: One Two Three Four
+for i in range(30):
+    tim.pendown()
+    tim.forward(10)
+    tim.penup()
+    tim.forward(10)
 
-# Step 1 define dictionary with num for keys and the string for the value
-# tabel
-nums = {
-    1: "One",
-    2: "Two",
-    3: "Three",
-    4: "Four",
-    5: "Five",
-    6: "Six",
-    7: "Seven",
-    8: "Eight",
-    9: "Nine",
-    0: "Zero",
-}
 
-# request input
-user_input = int(input("Phone: "))
-# loop through input and display
-for num in list(str(user_input)):
-    num = int(num)
-    print(f"{nums[num]} ")
+screen.exitonclick()
