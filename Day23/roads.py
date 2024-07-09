@@ -26,6 +26,7 @@ class Roads(Turtle):
 
     def draw_lines(self):
         if self.ycor() < MAX_Y:
+            self.showturtle()
             self.color("grey")
             self.goto(self.x, self.y)
             for i in range(30):
@@ -33,7 +34,7 @@ class Roads(Turtle):
                 self.forward(10)
                 self.penup()
                 self.forward(10)
-                if i % 2 == 0:
+                if i % 5 == 0:
                     self.screen.update()
             self.y += ROAD_WIDTH
         else:
@@ -44,11 +45,10 @@ class Roads(Turtle):
                 self.forward(10)
                 self.penup()
                 self.forward(10)
-                if i % 2 == 0:
+                if i % 3 == 0:
                     self.screen.update()
             self.hideturtle()
             self.are_on = True
-
 
     def erase(self):
         self.clear()

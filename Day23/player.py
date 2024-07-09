@@ -21,5 +21,5 @@ class Player(Turtle):
         self.forward(MOVE_DISTANCE)
 
     def level_up(self):
-        if self.ycor() >= FINISH_LINE_Y:
-            self.score += 1
+        self.score += 1
+        self.setpos(STARTING_POSITION)

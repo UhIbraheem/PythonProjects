@@ -12,18 +12,35 @@ screen.tracer(0)
 player = Player()
 scoreboard = Scoreboard()
 roads = Roads(screen)
-car = CarManager(screen)
+cars = []
+for i in range(25):
+    car = CarManager(screen)
+    cars.append(car)
+
 screen.listen()
 screen.onkey(player.move, "w")
 
 game_is_on = True
 while game_is_on:
-    roads.draw_lines()
-    if roads.are_on:
-        car.drive()
-    time.sleep(0.05)
     screen.update()
+    roads.draw_lines()
 
+    if roads.are_on:
+        for car in cars:
+            car.drive()
+            screen.update()
+            if car.collision_range(player):
+                scoreboard.game_over()
+                game_is_on = False
 
+    if player.ycor() > 230:
+        player.level_up()
+        scoreboard.point()
+        for car in cars:
+            car.starting_pos()
+            car.increase_speed()
+        roads.erase()
+
+    time.sleep(0.05)
 
 screen.exitonclick()
