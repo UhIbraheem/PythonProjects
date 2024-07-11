@@ -2,12 +2,12 @@ from random import choice
 from turtle import Turtle
 
 X_POSITIONS = []
-for i in range(325, 901, 25):
+for i in range(-325, 301, 30):
     X_POSITIONS.append(i)
 
 COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
-STARTING_MOVE_DISTANCE = 30
-MOVE_INCREMENT = 7
+STARTING_MOVE_DISTANCE = 20
+MOVE_INCREMENT = 5
 ENDING_X = -320
 Y_POSITIONS = [-205, -175, -145, -115, -85, -55, -25, 5, 35, 65, 95, 125, 155, 185]
 
@@ -31,16 +31,14 @@ class CarManager(Turtle):
         if self.xcor() > ENDING_X:
             self.forward(self.speed)
         else:
-            self.setpos(choice(X_POSITIONS), choice(Y_POSITIONS))
+            self.reset()
 
     def starting_pos(self):
         self.goto(self.x, self.y)
 
+    def reset(self):
+        self.goto(330, self.y)
+
     def increase_speed(self):
         self.speed += MOVE_INCREMENT
 
-    def collision_range(self, player):
-        if (self.xcor() - 30 < player.xcor() < self.xcor() + 50) and (
-                self.ycor() - 10 < player.ycor() < self.ycor() + 10):
-            return True
-        return False

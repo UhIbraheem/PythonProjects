@@ -1,7 +1,7 @@
 from turtle import Turtle
 
 STARTING_POSITION = (0, -270)
-MOVE_DISTANCE = 30
+MOVE_DISTANCE = 15
 FINISH_LINE_Y = 230
 
 

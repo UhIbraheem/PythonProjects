@@ -13,8 +13,9 @@ player = Player()
 scoreboard = Scoreboard()
 roads = Roads(screen)
 cars = []
-for i in range(25):
+for i in range(40):
     car = CarManager(screen)
+    car.hideturtle()
     cars.append(car)
 
 screen.listen()
@@ -27,20 +28,23 @@ while game_is_on:
 
     if roads.are_on:
         for car in cars:
-            car.drive()
-            screen.update()
-            if car.collision_range(player):
+            car.showturtle()
+            if car.distance(player) < 33:
                 scoreboard.game_over()
                 game_is_on = False
+                screen.update()
+                break
+            car.drive()
+            screen.update()
 
     if player.ycor() > 230:
         player.level_up()
         scoreboard.point()
         for car in cars:
-            car.starting_pos()
+            car.reset()
             car.increase_speed()
         roads.erase()
 
-    time.sleep(0.05)
+    time.sleep(0.01)
 
 screen.exitonclick()
