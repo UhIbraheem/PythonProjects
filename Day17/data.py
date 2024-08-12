@@ -41,7 +41,7 @@ question_data = [
         "type": "boolean",
         "difficulty": "easy",
         "category": "Science: Computers",
-        "question": "The Windows 7 operating system has six main editions.",
+        "question": "The Windows 7 operating system has six main.py editions.",
         "correct_answer": "True", "incorrect_answers": ["False"]},
     {
         "type": "boolean",

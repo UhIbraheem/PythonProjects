@@ -85,7 +85,7 @@ def hit_or_pass(score, houseScore):
 def game_status(score, houseScore, playerHold, houseHold):
     gameStatus = False
     # instead of returning a bunch of parameters and complicating the code
-    # I'll assign each possibility a number, when returned to main
+    # I'll assign each possibility a number, when returned to main.py
     # the number will be used to reference the reason for the game ending
 
     # if player busts = 1, house busts = 2, player lose = 3, house lose = 4
