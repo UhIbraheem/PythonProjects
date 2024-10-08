@@ -1,4 +1,6 @@
 from tkinter import *
+from tkinter import messagebox
+import pyperclip
 import random
 import string
 
@@ -23,6 +25,7 @@ def generate_password():
 
     random.shuffle(password)
     password = ''.join(password)
+    pyperclip.copy(password)
     password_entry.delete(0, END)
     password_entry.insert(END, password)
 
@@ -32,13 +35,22 @@ def generate_password():
 # all the entries into a file called data.txt with readable formatting
 
 def save():
-    with open('data.txt', 'a') as file:
-        user = username_entry.get()
-        password = password_entry.get()
-        website = website_entry.get()
-        file.write(f"{website} | {user} | {password}\n")
-    password_entry.delete(0, END)
-    website_entry.delete(0, END)
+    user = username_entry.get()
+    password = password_entry.get()
+    website = website_entry.get()
+
+    if len(website) == 0 or len(password) == 0:
+        messagebox.showerror(title="Empty Text", message="Please enter a website and password to be able to save!")
+
+    else:
+        is_okay = messagebox.askokcancel(title=website, message=f"These are the details entered: \nEmail: {user}\n"
+                                                                f"Password:{password}"
+                                                                f"\nIs it okay to save?")
+        if is_okay:
+            with open('data.txt', 'a') as file:
+                file.write(f"{website} | {user} | {password}\n")
+                password_entry.delete(0, END)
+                website_entry.delete(0, END)
 
 
 # ---------------------------- UI SETUP ------------------------------- #
